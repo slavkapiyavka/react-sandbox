@@ -6,15 +6,15 @@ interface ComponentProps {
 
 const BooleanComponent: React.FC<ComponentProps> = ({ data }) => {
   return (
-    <>
-      <h2>BooleanComponent</h2>
+    <div className="card">
+      <h2 className="heading-second">BooleanComponent</h2>
       <dl>
         <dt>value:</dt>
         <dd>
           <code>{data ? "true" : "false"}</code>
         </dd>
       </dl>
-    </>
+    </div>
   );
 };
 

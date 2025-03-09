@@ -10,7 +10,7 @@ import { componentsData } from "./shared/mocks/mock-data";
 
 function App() {
   return (
-    <>
+    <section className="section">
       <NumberComponent
         data={componentsData.get(ComponentsDataKeys.numberData) ?? 0}
       />
@@ -29,7 +29,7 @@ function App() {
       <ArrayComponent
         data={componentsData.get(ComponentsDataKeys.arrayData) ?? []}
       />
-    </>
+    </section>
   );
 }
 

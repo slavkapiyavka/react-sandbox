@@ -6,15 +6,15 @@ interface ComponentProps {
 
 const StringComponent: React.FC<ComponentProps> = ({ data }) => {
   return (
-    <>
-      <h2>StringComponent</h2>
+    <div className="card">
+      <h2 className="heading-second">StringComponent</h2>
       <dl>
         <dt>value:</dt>
         <dd>
           <code>{data}</code>
         </dd>
       </dl>
-    </>
+    </div>
   );
 };
 

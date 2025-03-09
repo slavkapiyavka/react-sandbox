@@ -1,1 +1,15 @@
-/**/
+.section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.card {
+  border-radius: 2px;
+  padding: 8px;
+  outline: 1px solid tomato;
+}
+
+.heading-second {
+  margin: 0 0 8px;
+}

@@ -8,8 +8,8 @@ const ObjectComponent: React.FC<ComponentProps> = ({ data }) => {
   const entries = Object.entries(data);
 
   return (
-    <>
-      <h2>ObjectComponent</h2>
+    <div className="card">
+      <h2 className="heading-second">ObjectComponent</h2>
       {entries.map(([key, value]) => (
         <dl key={key}>
           <dt>{key}:</dt>
@@ -18,7 +18,7 @@ const ObjectComponent: React.FC<ComponentProps> = ({ data }) => {
           </dd>
         </dl>
       ))}
-    </>
+    </div>
   );
 };
 
