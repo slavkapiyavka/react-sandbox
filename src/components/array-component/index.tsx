@@ -1,7 +1,20 @@
-import React from 'react';
+import React from "react";
 
-const ArrayComponent: React.FC = () => {
-  return <div>ArrayComponent</div>;
+interface ComponentProps {
+  data: string[];
+}
+
+const ArrayComponent: React.FC<ComponentProps> = ({ data }) => {
+  return (
+    <>
+      <h2>ArrayComponent</h2>
+      <ul>
+        {data.map((element: string) => (
+          <li key={element}>{element}</li>
+        ))}
+      </ul>
+    </>
+  );
 };
 
 export default ArrayComponent;

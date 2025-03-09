@@ -1,7 +1,21 @@
-import React from 'react';
+import React from "react";
 
-const NumberComponent: React.FC = () => {
-  return <div>NumberComponent</div>;
+interface ComponentProps {
+  data: number;
+}
+
+const NumberComponent: React.FC<ComponentProps> = ({ data }) => {
+  return (
+    <>
+      <h2>NumberComponent</h2>
+      <dl>
+        <dt>value:</dt>
+        <dd>
+          <code>{data}</code>
+        </dd>
+      </dl>
+    </>
+  );
 };
 
 export default NumberComponent;

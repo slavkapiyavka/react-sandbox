@@ -1,7 +1,21 @@
-import React from 'react';
+import React from "react";
 
-const BooleanComponent: React.FC = () => {
-  return <div>BooleanComponent</div>;
+interface ComponentProps {
+  data: boolean;
+}
+
+const BooleanComponent: React.FC<ComponentProps> = ({ data }) => {
+  return (
+    <>
+      <h2>BooleanComponent</h2>
+      <dl>
+        <dt>value:</dt>
+        <dd>
+          <code>{data ? "true" : "false"}</code>
+        </dd>
+      </dl>
+    </>
+  );
 };
 
 export default BooleanComponent;

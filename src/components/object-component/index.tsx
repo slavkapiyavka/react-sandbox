@@ -1,7 +1,25 @@
-import React from 'react';
+import React from "react";
 
-const ObjectComponent: React.FC = () => {
-  return <div>ObjectComponent</div>;
+interface ComponentProps {
+  data: object;
+}
+
+const ObjectComponent: React.FC<ComponentProps> = ({ data }) => {
+  const entries = Object.entries(data);
+
+  return (
+    <>
+      <h2>ObjectComponent</h2>
+      {entries.map(([key, value]) => (
+        <dl key={key}>
+          <dt>{key}:</dt>
+          <dd>
+            <code>{value}</code>
+          </dd>
+        </dl>
+      ))}
+    </>
+  );
 };
 
 export default ObjectComponent;
