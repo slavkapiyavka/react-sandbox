@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ChildComponent from "../child-component";
+import SiblingComponent from "../sibling-component";
 
 const ParentComponent: React.FC = () => {
   const [counter, setCounter] = useState(0);
@@ -69,6 +70,7 @@ const ParentComponent: React.FC = () => {
         </dd>
 
         <ChildComponent name={"slavkapiyavka"} counter={counter} />
+        <SiblingComponent />
       </dl>
     </div>
   );
