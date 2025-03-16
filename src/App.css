@@ -28,4 +28,9 @@
   border: 1px solid pink;
   border-radius: 2px;
   padding: 4px 8px;
+  background-color: rebeccapurple;
+}
+
+.button:disabled {
+  opacity: 0.5;
 }
