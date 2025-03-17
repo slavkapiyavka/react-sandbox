@@ -1,34 +1,16 @@
 import "./App.css";
-import NumberComponent from "./components/number-component";
-import StringComponent from "./components/string-component";
-import BooleanComponent from "./components/boolean-component";
-import ObjectComponent from "./components/object-component";
-import ArrayComponent from "./components/array-component";
-import FunctionComponent from "./components/function-component";
-import { ComponentsDataKeys } from "./shared/types/enums";
-import { componentsData } from "./shared/mocks/mock-data";
+import BooleanTextComponent from "./components/boolean-text-component";
+import CounterComponent from "./components/counter-component";
+import DynamicTextComponent from "./components/dynamic-text-component";
+import ParentComponent from "./components/parent-component";
 
 function App() {
   return (
     <section className="section">
-      <NumberComponent
-        data={componentsData.get(ComponentsDataKeys.numberData) ?? 0}
-      />
-      <StringComponent
-        data={componentsData.get(ComponentsDataKeys.stringData) ?? ""}
-      />
-      <BooleanComponent
-        data={componentsData.get(ComponentsDataKeys.booleanData) ?? true}
-      />
-      <ObjectComponent
-        data={componentsData.get(ComponentsDataKeys.objectData) ?? {}}
-      />
-      <FunctionComponent
-        data={componentsData.get(ComponentsDataKeys.functionData)}
-      />
-      <ArrayComponent
-        data={componentsData.get(ComponentsDataKeys.arrayData) ?? []}
-      />
+      <ParentComponent />
+      <CounterComponent />
+      <BooleanTextComponent text={"kek"} isTextVisible={true} />
+      <DynamicTextComponent />
     </section>
   );
 }
