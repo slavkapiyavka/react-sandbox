@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ChildComponent from "./ChildComponent";
 
 const ParentComponent = () => {
   const [counter, setCounter] = useState(0);
@@ -10,19 +11,23 @@ const ParentComponent = () => {
 
   return (
     <section>
-      <p>counter: {counter}</p>
-      <button onClick={increaseCounter} type="button">
-        increase
-      </button>
-      <button onClick={resetCounter} type="button">
-        reset
-      </button>
-      <button onClick={setRandomCounter} type="button">
-        random counter value
-      </button>
-      <button onClick={decreaseCounter} type="button">
-        decrease
-      </button>
+      <div>
+        <p>counter: {counter}</p>
+        <button onClick={increaseCounter} type="button">
+          increase
+        </button>
+        <button onClick={resetCounter} type="button">
+          reset
+        </button>
+        <button onClick={setRandomCounter} type="button">
+          random counter value
+        </button>
+        <button onClick={decreaseCounter} type="button">
+          decrease
+        </button>
+      </div>
+
+      <ChildComponent name="motherfucker" counter={counter} />
     </section>
   );
 };
