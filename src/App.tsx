@@ -1,4 +1,5 @@
 import "./App.css";
+import ColoredButton from "./components/ColoredButton";
 import Counter from "./components/Counter";
 import Input from "./components/Input";
 import Toggle from "./components/Toggle";
@@ -9,6 +10,7 @@ function App() {
       <Counter />
       <Toggle />
       <Input />
+      <ColoredButton />
     </div>
   );
 }
