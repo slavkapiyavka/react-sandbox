@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ChildComponent from "./ChildComponent";
+import SiblingComponent from "./SiblingComponent";
 
 const ParentComponent = () => {
   const [counter, setCounter] = useState(0);
@@ -28,6 +29,7 @@ const ParentComponent = () => {
       </div>
 
       <ChildComponent name="motherfucker" counter={counter} />
+      <SiblingComponent />
     </section>
   );
 };
