@@ -13,23 +13,26 @@ const UserProfile = () => {
     setUser((u) => ({ ...u, isActive: !u.isActive }));
 
   return (
-    <section>
-      <p>name: {user.name}</p>
-      <p>age: {user.age}</p>
-      <p>isActive: {user.isActive ? "yep" : "nope"}</p>
-      <button
-        disabled={user.name === "keker"}
-        onClick={changeUserName}
-        type="button"
-      >
-        change name
-      </button>
-      <button onClick={increaseAge} type="button">
-        increase age
-      </button>
-      <button onClick={toggleActivity} type="button">
-        toggle state
-      </button>
+    <section className={`card ${user.isActive ? "card_active-user" : ""}`}>
+      <div className="user-info">
+        <p className="card__text">name: {user.name}</p>
+        <p className="card__text">age: {user.age}</p>
+      </div>
+      <div className="buttons-group">
+        <button
+          disabled={user.name === "keker"}
+          onClick={changeUserName}
+          type="button"
+        >
+          change name
+        </button>
+        <button onClick={increaseAge} type="button">
+          increase age
+        </button>
+        <button onClick={toggleActivity} type="button">
+          toggle state
+        </button>
+      </div>
     </section>
   );
 };

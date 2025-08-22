@@ -34,9 +34,51 @@
 }
 
 .card {
-  padding: 2em;
+  position: relative;
+  outline: 1px solid lightgrey;
+  padding: 12px;
+  border-radius: 4px;
+  transition: outline 250ms;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
+    background-color: lightgray;
+    transition: background-color 250ms;
+  }
 }
 
-.read-the-docs {
-  color: #888;
+.card__text {
+  margin: 0;
+}
+
+.card_active-user {
+  outline-color: lightgreen;
+
+  &::after {
+    background-color: lightgreen;
+  }
+}
+
+.card_disabled {
+  outline: 1px solid gainsboro;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 0 12px;
+}
+
+.buttons-group {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
 }
