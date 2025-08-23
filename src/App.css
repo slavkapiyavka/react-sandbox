@@ -34,12 +34,19 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: auto;
   position: relative;
   outline: 1px solid lightgrey;
   padding: 12px;
   border-radius: 4px;
   transition: outline 250ms;
+  margin: 0 24px 24px 0;
+}
 
+.card:has(.user-info) {
   &::after {
     content: "";
     position: absolute;
@@ -57,7 +64,7 @@
   margin: 0;
 }
 
-.card_active-user {
+.card_active-user:has(.user-info) {
   outline-color: lightgreen;
 
   &::after {
@@ -81,4 +88,17 @@
   align-items: center;
   flex-direction: row;
   gap: 8px;
+}
+
+.todo-list {
+  min-height: 128px;
+  max-height: 256px;
+}
+
+ul {
+  padding: 12px 0 0 0;
+  margin: 0 0 12px 0;
+  list-style: none;
+  text-align: start;
+  overflow: auto;
 }
