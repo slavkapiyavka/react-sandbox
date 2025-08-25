@@ -1,10 +1,6 @@
 import { Component } from "react";
 import { CONSTANTS } from "../utils/constants";
-
-interface IState {
-  count: number;
-  message?: string;
-}
+import type { IState } from "../utils/interfaces";
 
 class LifeCycleComponentClass extends Component {
   state: IState = {
