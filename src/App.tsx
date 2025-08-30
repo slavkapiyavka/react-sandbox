@@ -1,34 +1,67 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useState, useEffect } from "react";
 import "./App.css";
+import { type TGalleryImage } from "./core/types";
+import { CONSTANTS } from "./core/constants";
+import Gallery from "./components/Gallery";
+import Title from "./components/Title";
+import Input from "./components/Input";
+import UpdatesCounter from "./components/UpdatesCounter";
+import Button from "./components/Button";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [imagesCount, setImagesCount] = useState(CONSTANTS.START_IMAGES_COUNT);
+  const [updatesCount, setUpdatesCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [images, setImages] = useState<TGalleryImage[]>([]);
+
+  useEffect(() => {
+    getImages(CONSTANTS.START_IMAGES_COUNT, false);
+  }, []);
+
+  const getImages = (count: number, keepInCount: boolean = true) => {
+    setIsLoading(true);
+
+    fetch(`${CONSTANTS.DOGS_API}/breeds/image/random/${count}`)
+      .then((r) => r.json())
+      .then((d) => {
+        const newImages = d.message.map((i: string) => ({ url: i }));
+        setImages(newImages);
+      })
+      .finally(() => {
+        setIsLoading(false);
+        if (keepInCount) setUpdatesCount((c) => c + 1);
+      });
+  };
+
+  const onImagesCountChange = (value: string) => {
+    const num = parseInt(value);
+
+    if (num <= 0) return;
+
+    setImagesCount(Number(value));
+  };
+
+  const onGetImagesClick = () => {
+    getImages(imagesCount);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <section>
+      <Title text={CONSTANTS.APP_TITLE} />
+
+      <UpdatesCounter value={updatesCount} isLoading={isLoading} />
+      <Input
+        disabled={isLoading}
+        value={imagesCount}
+        cb={onImagesCountChange}
+      />
+      <Button
+        disabled={isLoading}
+        text={CONSTANTS.BUTTON_UPDATE_TEXT}
+        cb={onGetImagesClick}
+      />
+      <Gallery images={images} isLoading={isLoading} />
+    </section>
   );
 }
 
