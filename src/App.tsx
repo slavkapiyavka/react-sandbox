@@ -18,19 +18,22 @@ function App() {
     getImages(CONSTANTS.START_IMAGES_COUNT, false);
   }, []);
 
-  const getImages = (count: number, keepInCount: boolean = true) => {
+  const getImages = async (count: number, keepInCount: boolean = true) => {
     setIsLoading(true);
 
-    fetch(`${CONSTANTS.DOGS_API}/breeds/image/random/${count}`)
-      .then((r) => r.json())
-      .then((d) => {
-        const newImages = d.message.map((i: string) => ({ url: i }));
-        setImages(newImages);
-      })
-      .finally(() => {
-        setIsLoading(false);
-        if (keepInCount) setUpdatesCount((c) => c + 1);
-      });
+    try {
+      const request = await fetch(
+        `${CONSTANTS.DOGS_API}/breeds/image/random/${count}`
+      );
+      const data = await request.json();
+      const newImages = data.message.map((i: string) => ({ url: i }));
+      setImages(newImages);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+      if (keepInCount) setUpdatesCount((c) => c + 1);
+    }
   };
 
   const onImagesCountChange = (value: string) => {
