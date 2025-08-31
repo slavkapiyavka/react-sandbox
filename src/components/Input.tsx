@@ -7,6 +7,7 @@ type Props = {
 const Input = ({ value, disabled, cb }: Props) => {
   return (
     <input
+      id="count-input"
       type="number"
       min="1"
       max="50"
