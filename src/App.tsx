@@ -94,7 +94,7 @@ function App() {
         max={CONSTANTS.MAX_IMAGES_COUNT}
         disabled={isLoading}
         value={imagesCount}
-        cb={onImagesCountChange}
+        onChange={(e) => onImagesCountChange(e.target.value)}
       />
       <select
         name="breeds"
@@ -110,12 +110,9 @@ function App() {
           </option>
         ))}
       </select>
-      <Button
-        disabled={isLoading}
-        text={CONSTANTS.BUTTON_UPDATE_TEXT}
-        cb={onGetImagesClick}
-        type={'button'}
-      />
+      <Button disabled={isLoading} onClick={onGetImagesClick} type={"button"}>
+        {CONSTANTS.BUTTON_UPDATE_TEXT}
+      </Button>
       <Gallery images={images} isLoading={isLoading} />
     </section>
   );

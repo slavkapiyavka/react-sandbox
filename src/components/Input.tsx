@@ -1,17 +1,27 @@
 import type { ComponentProps } from "react";
 
-type Props = ComponentProps<"input"> & {
-  cb: (e: string) => void;
-};
+type Props = ComponentProps<"input">;
 
-const Input = ({ value, disabled, id, type = "text", min, max, cb }: Props) => {
+const Input = ({
+  value,
+  disabled,
+  id,
+  type = "text",
+  min,
+  max,
+  onChange,
+}: Props) => {
   return (
     <input
       id={id}
       type={type}
       min={min}
       max={max}
-      onChange={(e) => cb(e.target.value)}
+      onChange={(e) => {
+        if (onChange) {
+          onChange(e);
+        }
+      }}
       value={value}
       disabled={disabled}
     />

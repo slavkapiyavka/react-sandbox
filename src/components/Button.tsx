@@ -1,14 +1,11 @@
 import type { ComponentProps } from "react";
 
-type Props = ComponentProps<"button"> & {
-  text: string;
-  cb: () => void;
-};
+type Props = ComponentProps<"button">;
 
-const Button = ({ text, disabled, type = "button", cb }: Props) => {
+const Button = ({ children, disabled, type = "button", onClick }: Props) => {
   return (
-    <button type={type} disabled={disabled} onClick={cb}>
-      {text}
+    <button type={type} disabled={disabled} onClick={onClick}>
+      {children}
     </button>
   );
 };
