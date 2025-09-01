@@ -1,14 +1,10 @@
-type Props = {
-  value: number;
-  disabled: boolean;
+import type { ComponentProps } from "react";
+
+type Props = ComponentProps<"input"> & {
   cb: (e: string) => void;
-  id: string;
-  type?: 'number' | 'text' | 'password';
-  min?: number;
-  max?: number;
 };
 
-const Input = ({ value, disabled, cb, id, type = 'text', min, max }: Props) => {
+const Input = ({ value, disabled, id, type = "text", min, max, cb }: Props) => {
   return (
     <input
       id={id}

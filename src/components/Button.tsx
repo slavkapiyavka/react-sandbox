@@ -1,11 +1,11 @@
-type Props = {
+import type { ComponentProps } from "react";
+
+type Props = ComponentProps<"button"> & {
   text: string;
-  disabled: boolean;
   cb: () => void;
-  type: "button" | "submit" | "reset";
 };
 
-const Button = ({ text, disabled, cb, type = "button" }: Props) => {
+const Button = ({ text, disabled, type = "button", cb }: Props) => {
   return (
     <button type={type} disabled={disabled} onClick={cb}>
       {text}
