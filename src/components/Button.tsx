@@ -2,11 +2,12 @@ type Props = {
   text: string;
   disabled: boolean;
   cb: () => void;
+  type: "button" | "submit" | "reset";
 };
 
-const Button = ({ text, disabled, cb }: Props) => {
+const Button = ({ text, disabled, cb, type = "button" }: Props) => {
   return (
-    <button type="button" disabled={disabled} onClick={cb}>
+    <button type={type} disabled={disabled} onClick={cb}>
       {text}
     </button>
   );

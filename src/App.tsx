@@ -88,6 +88,10 @@ function App() {
       <Title text={CONSTANTS.APP_TITLE} />
       <UpdatesCounter value={updatesCount} isLoading={isLoading} />
       <Input
+        id="count-input"
+        type="number"
+        min={CONSTANTS.MIN_IMAGES_COUNT}
+        max={CONSTANTS.MAX_IMAGES_COUNT}
         disabled={isLoading}
         value={imagesCount}
         cb={onImagesCountChange}
@@ -110,6 +114,7 @@ function App() {
         disabled={isLoading}
         text={CONSTANTS.BUTTON_UPDATE_TEXT}
         cb={onGetImagesClick}
+        type={'button'}
       />
       <Gallery images={images} isLoading={isLoading} />
     </section>
