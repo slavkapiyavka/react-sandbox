@@ -1,33 +1,42 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useRef, useState, type FormEvent } from "react";
 import "./App.css";
+import { List } from "./components/List";
+import type { Base } from "./shared/types";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const [list, setList] = useState<Base[]>([
+    { id: "8453058", text: "text" },
+    { id: "4824802", text: "text2" },
+    { id: "4324243", text: "text3" },
+  ]);
+  const onFormSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const id = String(Math.floor(Math.random() * 100000000));
+    const text = inputRef.current?.value ?? "";
+
+    setList((l) => [...l, { id, text }]);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <form onSubmit={onFormSubmit}>
+        <input type="text" ref={inputRef} />
+        <button type="button" onClick={() => inputRef.current?.focus()}>
+          focus
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      </form>
+      <List
+        items={list}
+        onItemEdit={(item: Base) =>
+          setList((items): Base[] =>
+            items.map((i) =>
+              i.id === item.id ? { id: i.id, text: `!!!${i.text}` } : i,
+            ),
+          )
+        }
+      />
     </>
   );
 }
