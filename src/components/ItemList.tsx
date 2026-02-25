@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import type { ListItem } from "../shared/types/list-item";
 
-interface IProps {
+type IProps = {
   needle: string;
   list: ListItem[];
-}
+};
 
 const ItemList = ({ needle, list }: IProps) => {
   const filtered = useMemo(() => list.filter((item) => item.name.toLowerCase().includes(needle.toLowerCase())), [needle, list]);
