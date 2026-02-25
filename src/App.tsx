@@ -7,6 +7,8 @@ import type { ListItem } from "./shared/types/list-item";
 
 function App() {
   const [needle, setNeedle] = useState("");
+  const [counter, setCounter] = useState(0);
+
   const list: ListItem[] = [
     { id: 'fn8d', name: 'sirius' },
     { id: 'v9f890gf', name: 'fang' },
@@ -16,12 +18,14 @@ function App() {
     { id: 'ds8dn5', name: 'pam' }
   ];
   const onChange = useCallback((value: string) => setNeedle(value), []);
+  const onIncrement = useCallback(() => setCounter(prev => ++prev), []);
 
   return (
     <>
+      <p>щётчик: {counter}</p>
       <SearchInput value={needle} onChange={(e) => onChange(e.target.value)} />
       <ItemList needle={needle} list={list} />
-      <CounterButton />
+      <CounterButton onClick={onIncrement} />
     </>
   );
 }
