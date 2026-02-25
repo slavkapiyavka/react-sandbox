@@ -10,7 +10,7 @@ function App() {
   const [counter, setCounter] = useState(0);
 
   const onChange = useCallback((value: string) => setNeedle(value), []);
-  const onIncrement = useCallback(() => setCounter(prev => ++prev), []);
+  const onIncrement = useCallback(() => setCounter(prev => prev + 1), []);
 
   return (
     <>
