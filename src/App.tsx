@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, type ChangeEvent } from "react";
 import "./App.css";
 import CounterButton from "./components/CounterButton";
 import ItemList from "./components/ItemList";
@@ -9,13 +9,13 @@ function App() {
   const [needle, setNeedle] = useState("");
   const [counter, setCounter] = useState(0);
 
-  const onChange = useCallback((value: string) => setNeedle(value), []);
+  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setNeedle(e.target.value), []);
   const onIncrement = useCallback(() => setCounter(prev => prev + 1), []);
 
   return (
     <>
       <p>щётчик: {counter}</p>
-      <SearchInput value={needle} onChange={(e) => onChange(e.target.value)} />
+      <SearchInput value={needle} onChange={onChange} />
       <ItemList needle={needle} list={BRAWLERS} />
       <CounterButton onClick={onIncrement} />
     </>
