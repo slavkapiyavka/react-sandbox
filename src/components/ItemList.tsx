@@ -10,7 +10,7 @@ const ItemList = ({ needle, list }: IProps) => {
   const filtered = useMemo(() => list.filter((item) => item.name.toLowerCase().includes(needle.toLowerCase())), [needle, list]);
 
   return (
-    filtered.length ? <ul>{filtered.map((item) => <li key={item.id}>{item.name}</li>)}</ul> : <p>empty list</p>
+    filtered.length ? <ul className="list">{filtered.map((item) => <li key={item.id} className="list__item">{item.name}</li>)}</ul> : <p>empty list</p>
   );
 };
 
