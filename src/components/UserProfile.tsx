@@ -1,4 +1,5 @@
 import { useState } from "react";
+import UserInfo from "./UserInfo";
 
 const UserProfile = () => {
   const [user, setUser] = useState({
@@ -14,10 +15,7 @@ const UserProfile = () => {
 
   return (
     <section className={`card ${user.isActive ? "card_active-user" : ""}`}>
-      <div className="user-info">
-        <p className="card__text">name: {user.name}</p>
-        <p className="card__text">age: {user.age}</p>
-      </div>
+      <UserInfo name={user.name} age={user.age} />
       <div className="buttons-group">
         <button
           disabled={user.name === "keker"}
